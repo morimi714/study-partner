@@ -1,0 +1,2 @@
+class InquiryMailerController < ApplicationController
+end

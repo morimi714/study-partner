@@ -1,0 +1,21 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+        <%= @teacher.img %>
+        <%= @teacher.nickname %>
+        <%= @teacher.gender %>
+        <%= @teacher.university %>
+        <%= @teacher.wage %>
+        <%= @teacher.trafficwage %>
+        <%= @teacher.time %>
+        <%= @teacher.prefecture %>
+        <%= @teacher.region %>
+        <%= @teacher.profile %>
+        <%= @teacher.message %>
+        
+        <% if @current_user %>
+          <%= link_to "この先生に相談する" %>
+        <% end %>
+    </div>
+  </div>
+</div>

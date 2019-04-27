@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StudyPartner</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+    <div class="container">
+      <div class="header-left">
+        <img class="logo" src="">
+      </div>
+      <div class="header-right">
+        <% if @current_teacher %>
+          <ul>
+            <li><%= link_to "マイページ","/teachers/#{@current_teacher.id}" %></li>
+            <li><%= link_to "基本情報の編集","/teachers/#{@current_teacher.id}/edit" %></li>
+            <li><%= link_to 'ログアウト',teachers_logout_path, method: :post%></li>
+          </ul>
+        <% elsif @current_user %>
+        <ul>
+          <li><%= link_to "家庭教師をさがす","/teachers/index"%></li>
+          <li><%= link_to "マイページ","/users/#{@current_user.id}"%></li>
+          <li><%= link_to "基本情報の編集","/users/#{@current_user.id}/edit"%></li>
+          <li><%= link_to "ログアウト", logout_path, method: :post%></li>
+        </ul>
+        <% else %>
+          <ul>
+            <li><%= link_to("新規登録(生徒用)", signup_path) %></li>
+            <li><%= link_to("ログイン(生徒用)", login_path, method: :post) %></li>
+            <li><%= link_to("新規登録(先生用)", teachers_signup_path) %></li>
+            <li><%= link_to("ログイン(先生用)", teachers_login_path, method: :post) %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    
+  </header>
+    <!--flash文の追加-->
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
+  
+    <footer>
+          <div class="container">
+            <div class="footer-left">
+                <h5> Study Partner</h5>
+                <p>スタディパートナーは生徒と家庭教師をつなぐ、個人契約のマッチングサイトです。</p>
+                  <div class="footer-copyright">
+                    <p>© 2019 Study Partner</p>
+                    <a href="#!">More Links</a>
+                  </div>
+              </div>
+              <div class="footer-right">
+                <ul>
+                  <li><a href="#!">お問い合わせ</a></li>
+                  <li><a href="#!">利用規約</a></li>
+                  <li><a href="#!">プライバシーポリシー</a></li>
+                  <li><a href="#!">特定商取引法に基づく表記</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+    </footer>
+  </body>
+</html>

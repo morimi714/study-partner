@@ -1,0 +1,17 @@
+<div class="main users-index">
+  <div class="container">
+    <h1 class="users-heading">ユーザー一覧</h1>
+   
+    <% @teachers.each do |teacher| %>
+      <div class="card">
+        
+        <%= teacher.img %>
+        <%= teacher.nickname %>
+        <%= teacher.gender %>
+        <%= teacher.university %>
+       <!--teacherに合わせて@teacherではなくteacher.idでかく-->
+        <%= link_to "詳細を見る","/teachers/#{teacher.id}" %>
+      </div>
+    <% end %>
+  </div>
+</div>

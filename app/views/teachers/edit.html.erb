@@ -1,0 +1,199 @@
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">アカウント編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <!-- エラーメッセージを表示するためのHTMLを貼り付けてください -->
+        <% @teacher.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        
+        <!-- フォームの送信先を指定してください -->
+        <%= form_tag("/teachers/#{@teacher.id}/update", {multipart: true}) do %>
+          <tr>
+            <td>本名(非公開)</td>
+            <td><input name="name" value="<%= @teacher.name %>"></td>
+          </tr>
+          
+          <tr>
+            <td>画像</td>
+            <td><input name="img" type="file" value="<%= @teacher.img %>"></td>
+          </tr>
+          
+          <tr>
+            <td>メールアドレス（連絡用）</td>
+            <td><input name="email" value="<%= @teacher.email %>"></td>
+          </tr>
+          
+          <tr>
+            <td>パスワード（非公開）</td>
+            <td><input name="password" type="password" value="<%= @teacher.password %>"></td>
+          </tr>
+          
+          <tr>
+            <td>ニックネーム（公開）</td>
+            <td><input name="nickname" value= "<%= @teacher.nickname %>"></td>
+          </tr>
+          
+          <tr>
+            <td>性別</td>
+            <td>男性<input type="radio" name="gender" value="男性"></td>
+            <td>女性<input type="radio" name="gender" value="女性"></td>
+          </tr>
+          
+          <tr>
+            <td>大学名</td>
+            <td><input name="university" value="<%= @teacher.university %>"></td>
+          </tr>
+          
+          <tr>
+            <td>時給</td>
+            <td><input name="wage" value="<%= @teacher.wage %>">円/時間</td>
+          </tr>
+          
+          <tr>
+            <td>交通費</td>
+            <td><input name="trafficwage"  type="checkbox" value="希望">希望</td>
+          </tr>
+          
+          <tr>
+            <td>指導可能時間</td>
+            <td><input name="time" placeholder="例）月曜16:00から、水曜19:00から可能です" value="<%= @teacher.time %>"></td>
+          </tr>
+          
+          <tr>
+            <td>都道府県選択</td>
+            <td>
+              <select name="prefecture">
+          <option value="" selected>都道府県</option>
+          <option value="北海道">北海道</option>
+          <option value="青森県">青森県</option>
+          <option value="岩手県">岩手県</option>
+          <option value="宮城県">宮城県</option>
+          <option value="秋田県">秋田県</option>
+          <option value="山形県">山形県</option>
+          <option value="福島県">福島県</option>
+          <option value="茨城県">茨城県</option>
+          <option value="栃木県">栃木県</option>
+          <option value="群馬県">群馬県</option>
+          <option value="埼玉県">埼玉県</option>
+          <option value="千葉県">千葉県</option>
+          <option value="東京都">東京都</option>
+          <option value="神奈川県">神奈川県</option>
+          <option value="新潟県">新潟県</option>
+          <option value="富山県">富山県</option>
+          <option value="石川県">石川県</option>
+          <option value="福井県">福井県</option>
+          <option value="山梨県">山梨県</option>
+          <option value="長野県">長野県</option>
+          <option value="岐阜県">岐阜県</option>
+          <option value="静岡県">静岡県</option>
+          <option value="愛知県">愛知県</option>
+          <option value="三重県">三重県</option>
+          <option value="滋賀県">滋賀県</option>
+          <option value="京都府">京都府</option>
+          <option value="大阪府">大阪府</option>
+          <option value="兵庫県">兵庫県</option>
+          <option value="奈良県">奈良県</option>
+          <option value="和歌山県">和歌山県</option>
+          <option value="鳥取県">鳥取県</option>
+          <option value="島根県">島根県</option>
+          <option value="岡山県">岡山県</option>
+          <option value="広島県">広島県</option>
+          <option value="山口県">山口県</option>
+          <option value="徳島県">徳島県</option>
+          <option value="香川県">香川県</option>
+          <option value="愛媛県">愛媛県</option>
+          <option value="高知県">高知県</option>
+          <option value="福岡県">福岡県</option>
+          <option value="佐賀県">佐賀県</option>
+          <option value="長崎県">長崎県</option>
+          <option value="熊本県">熊本県</option>
+          <option value="大分県">大分県</option>
+          <option value="宮崎県">宮崎県</option>
+          <option value="鹿児島県">鹿児島県</option>
+          <option value="沖縄県">沖縄県</option>
+          </select>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>授業可能地域</td>
+            <td><input name="region" placeholder="例）JR中央線沿線、都営新宿線沿線" value="<%= @teacher.region%>"></td>
+          </tr>
+          
+          <tr>
+            <td>プロフィール・趣味</td>
+            <td><input name="profile" type="text" placeholder="経歴・趣味を入力してください"value="<%= @teacher.profile %>"></td>
+          </tr>
+          
+          <tr>
+            <td>メッセージ</td>
+            <td><input name="message" type="text" placeholder="メッセージを入力すると応募率が高くなります"　value="<%= @teacher.message %>"><br></td>
+          </tr>
+        
+          <!--ここから先はリリース後に編集する-->
+          <!--<tr>-->
+          <!--  <td>指導可能時間</td>-->
+          <!--  <table>-->
+          <!--    <tr>-->
+          <!--      <td>曜日/時間</td>-->
+          <!--      <td>月曜</td>-->
+          <!--      <td>火曜</td>-->
+          <!--      <td>水曜</td>-->
+          <!--      <td>木曜</td>-->
+          <!--      <td>金曜</td>-->
+          <!--      <td>土曜</td>-->
+          <!--      <td>日曜</td>-->
+          <!--    </tr>-->
+          <!--    <tr>-->
+          <!--      <td>午前中</td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="mon1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="tue1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="wed1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="thu1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="fri1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sat1"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sun1"></td>-->
+          <!--    </tr>-->
+          <!--    <tr>-->
+          <!--      <td>13:00~16:00</td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="mon2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="tue2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="wed2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="thu2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="fri2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sat2"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sun2"></td>-->
+          <!--    </tr>-->
+          <!--    <tr>-->
+          <!--      <td>16:00~19:00</td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="mon3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="tue3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="wed3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="thu3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="fri3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sat3"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sun3"></td>-->
+          <!--    </tr>-->
+          <!--    <tr>-->
+          <!--      <td>19:00~22:00</td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="mon4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="tue4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="wed4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="thu4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="fri4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sat4"></td>-->
+          <!--      <td><input type="checkbox" name="time[day_of_the_week][]" value="sun4"></td>-->
+          <!--    </tr>-->
+          <!--  </table>-->
+          <!--<tr>-->
+          
+          <input type="submit" value="保存">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

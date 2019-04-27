@@ -1,0 +1,2 @@
+module InquiryMailerHelper
+end
