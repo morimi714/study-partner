@@ -1,6 +1,6 @@
 <div class="main users-index">
   <div class="container">
-    <h1 class="users-heading">ユーザー一覧</h1>
+    <h1 class="users-heading">家庭教師一覧</h1>
    
     <% @teachers.each do |teacher| %>
       <div class="card">
@@ -13,5 +13,6 @@
         <%= link_to "詳細を見る","/teachers/#{teacher.id}" %>
       </div>
     <% end %>
+    <%= paginate(@teachers) %>
   </div>
 </div>

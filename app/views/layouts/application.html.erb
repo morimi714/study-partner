@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>StudyPartner</title>
+    <meta name="description" content="生徒と家庭教師をつなぐ、個人契約のマッチングサイトです。入会金・年会費・管理費全て無料でご利用いただけます。">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,7 +14,8 @@
     <header>
     <div class="container">
       <div class="header-left">
-        <img class="logo" src="">
+        <a href="/">Study Partner</a>
+        <!-- 後で画像を入れる-->
       </div>
       <div class="header-right">
         <% if @current_teacher %>

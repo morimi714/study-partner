@@ -3,15 +3,18 @@
     <div class="form-heading">新規ユーザー登録</div>
     <div class="form users-form">
       <div class="form-body">
-        <p>ユーザー名</p>
-        <!-- <input>タグを用いて1行の入力フォームを作成してください -->
-        <input>
-        
-        <p>メールアドレス</p>
-        <!-- <input>タグを用いて1行の入力フォームを作成してください -->
-        <input>
-        
-        <input type="submit" value="新規登録">
+        <%= form_tag("/users/create") do %>
+          <p>ユーザー名</p>
+          <!-- value属性を用いて、初期値を設定してください -->
+          <input name="name" value="<%= @user.name %>">
+          <p>メールアドレス</p>
+          <!-- value属性を用いて、初期値を設定してください -->
+          <input name="email" value="<%= @user.email %>">
+          <p>パスワード</p>
+          <!-- パスワード用のフォームを追加してください -->
+          <input type="password" name="password" value="<%= @user.password %>">
+          <input type="submit" value="新規登録">
+        <% end %>
       </div>
     </div>
   </div>

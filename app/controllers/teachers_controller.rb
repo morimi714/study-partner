@@ -4,7 +4,7 @@ class TeachersController < ApplicationController
   before_action :ensure_correct_teacher, {only: [:edit, :update]}
 
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.order("updated_at DESC").page(params[:page]).per(24)
     @teacher = Teacher.new(teacher_params)
   end
   
@@ -84,6 +84,6 @@ class TeachersController < ApplicationController
   
   private
   def teacher_params
-    params.permit(:name, :email, :password, :nickname, :gender, :university, :wage, :trafficwage, :time, :prefecture, :region, :profile, :message)
+    params.permit(:name, :email, :password, :nickname, :gender, :university, :faculty, :department, :wage, :trafficwage, :time, :prefecture, :region, :profile, :message)
   end
 end

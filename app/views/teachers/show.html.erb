@@ -5,6 +5,8 @@
         <%= @teacher.nickname %>
         <%= @teacher.gender %>
         <%= @teacher.university %>
+         <%= @teacher.faculty %>
+        <%= @teacher.department %>
         <%= @teacher.wage %>
         <%= @teacher.trafficwage %>
         <%= @teacher.time %>
@@ -15,6 +17,7 @@
         
         <% if @current_user %>
           <%= link_to "この先生に相談する" %>
+          <%= link_to "戻る", "/teachers/index" %>
         <% end %>
     </div>
   </div>
