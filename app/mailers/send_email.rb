@@ -1,5 +1,4 @@
-class InquiryMailer < ApplicationRecord
- 
+class SendEmail < ApplicationMailer
   def send_email(inquiry)
     @teacher = Teacher.find(id: params[:teacher_id])
     @inquiry = inquiry
