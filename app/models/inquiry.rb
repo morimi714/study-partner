@@ -1,9 +1,8 @@
 class Inquiry < ApplicationRecord
-  #データベースを使わないモデルはアクティブレコードを使う
   include ActiveModel::Model
- 
-  attr_accessor :name, :email, :message
- 
-  validates :name, :presence => {:message => '名前を入力してください'}
-  validates :email, :presence => {:message => 'メールアドレスを入力してください'}
+  
+  attr_accessor :body
+  
+  belongs_to :teacher
+  belongs_to :user
 end

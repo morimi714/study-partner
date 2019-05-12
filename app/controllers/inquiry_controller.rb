@@ -1,26 +1,26 @@
 class InquiryController < ApplicationController
-  def index
+  def new
     # 入力画面を表示
     @inquiry = Inquiry.new
-    render :action => 'index'
+    render :action => 'new'
   end
  
   def confirm
     # 入力値のチェック
     @inquiry = Inquiry.new(inquiry_params)
-    if @inquiry.valid?
-      # OK。確認画面を表示
-      render :action => 'confirm'
-    else
-      # NG。入力画面を再表示
-      render :action => 'index'
-    end
+    # if @inquiry.valid?
+    #   # OK。確認画面を表示
+    #   render :action => 'confirm'
+    # else
+    #   # NG。入力画面を再表示
+    #   render :action => 'new'
+    # end
   end
  
   def thanks
     # メール送信
     @inquiry = Inquiry.new(inquiry_params)
-    InquiryMailer.received_email(@inquiry).deliver
+    InquiryMailer.send_mail(@inquiry).deliver
  
     # 完了画面を表示
     render :action => 'thanks'
@@ -28,6 +28,6 @@ class InquiryController < ApplicationController
   
   private
   def inquiry_params
-    params.require(:inquiry).permit(:name, :email, :message)
+    params.require(:inquiry).permit(:body, :teacher_id, :user_id)
   end
 end

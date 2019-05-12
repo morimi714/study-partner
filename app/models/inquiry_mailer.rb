@@ -1,9 +1,10 @@
 class InquiryMailer < ApplicationRecord
-  default from: "example@example.com"   # 送信元アドレス
-  default to: "example@example.com"     # 送信先アドレス
  
-  def received_email(inquiry)
+  def send_mail(inquiry)
+    @teacher = Teacher.find(id: params[:teacher_id])
     @inquiry = inquiry
-    mail(:subject => 'お問い合わせを承りました')
+    mail(from: @current_user.email,
+        to: @teacher.email,
+        subject:  'お問い合わせ内容')
   end
 end

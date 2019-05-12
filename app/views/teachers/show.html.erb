@@ -16,7 +16,7 @@
         <%= @teacher.message %>
         
         <% if @current_user %>
-          <%= link_to "この先生に相談する" %>
+          <%= link_to "この先生に相談する" ,new_teacher_inquiry_path(@teacher) %>
           <%= link_to "戻る", "/teachers/index" %>
         <% end %>
     </div>

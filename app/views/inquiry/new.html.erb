@@ -1,0 +1,5 @@
+<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+  <p>お問い合わせ</p>
+  <%= f.text_area :body %>
+  <%= f.submit '確認' %>
+<% end %>

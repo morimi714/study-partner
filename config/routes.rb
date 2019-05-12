@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   get "signup" => "users#new"
   get "users/:id" => "users#show"
   
+  #お問い合わせフォーム
+  resources :teachers do
+    resources :inquiry
+  end
+  post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
+  post 'inquiry/thanks' => 'inquiry#thanks'     # 送信完了画面
+  
 end
